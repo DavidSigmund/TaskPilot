@@ -1,4 +1,9 @@
 .TaskBoard {
     width: 80%;
     height: 100%;
+    background-color: #EEEDED;
+}
+
+.TaskList {
+    padding: 0px 30px;
 }
