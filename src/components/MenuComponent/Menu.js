@@ -1,10 +1,10 @@
-// import "Menu.css"
+import "./Menu.css"
 
 function Menu() {
 
     return (
         <div className="Menu">
-            ba
+
         </div>
     )
 }
