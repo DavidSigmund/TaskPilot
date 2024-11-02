@@ -1,14 +1,21 @@
 import "./TaskBoard.css"
 
 // components
-import AddTask from "../AddTaskComponent/AddTask.js";
+import AddTaskModal from "../AddTaskModalComponent/AddTaskModal.js";
 import Task from "../TaskComponent/Task.js";
 
 function TaskBoard() {
 
     return (
         <div className="TaskBoard">
-            <h1 className="text-start p-5">TaskBoard</h1>
+
+            {/* modals */}
+            <AddTaskModal />
+
+            <div className="TaskHeader">
+                <h1>TaskBoard</h1>
+                <button className="AddButton btn btn-primary" data-bs-toggle="modal" data-bs-target=".addTaskModal"> + </button>
+            </div>
 
             <div className="TaskList">
                 <table className="table">
@@ -22,7 +29,6 @@ function TaskBoard() {
                 </table>
 
                 {/* tasks */}
-                <AddTask />
                 <Task />
 
 
