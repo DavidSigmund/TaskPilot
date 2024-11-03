@@ -41,6 +41,7 @@ function TaskBoard() {
                 </table>
 
                 {/* tasks */}
+
                 {
                     taskData.map((task, index) => (
                         <Task
@@ -48,10 +49,7 @@ function TaskBoard() {
                             task={task}
                         />
                     ))
-
-
                 }
-                <Task />
 
 
             </div>
