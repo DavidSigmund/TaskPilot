@@ -5,6 +5,18 @@ import AddTaskModal from "../AddTaskModalComponent/AddTaskModal.js";
 import Task from "../TaskComponent/Task.js";
 
 function TaskBoard() {
+    const [taskData, setTaskData] = useState([]);
+
+    const getTaskData = async () => {
+        const reqData = await fetch("http://localhost/TaskPilot/api/Tasks.php");
+        const resData = await reqData.json();
+        setTaskData(resData);
+    };
+
+
+    useEffect(() => {
+        getTaskData();
+    }, []);
 
     return (
         <div className="TaskBoard">
@@ -29,6 +41,16 @@ function TaskBoard() {
                 </table>
 
                 {/* tasks */}
+                {
+                    taskData.map((task, index) => (
+                        <Task
+                            key={index}
+                            task={task}
+                        />
+                    ))
+
+
+                }
                 <Task />
 
 
