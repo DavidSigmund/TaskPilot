@@ -11,6 +11,9 @@ function Task(props) {
             <div className="TaskContent">{task.taskContent}</div>
             <div className="TaskDate">{task.taskTargetDate}</div>
             <div className="TaskPriority">{task.taskPriority}</div>
+            <button className="btn btn-info">...</button>
+            <button className="btn btn-danger">x</button>
+
         </div>
     );
 }

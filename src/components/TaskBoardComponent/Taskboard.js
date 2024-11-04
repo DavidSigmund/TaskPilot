@@ -8,6 +8,8 @@ import Task from "../TaskComponent/Task.js";
 
 function TaskBoard() {
     const [taskData, setTaskData] = useState([]);
+    const [selectedTask, setSelectedTask] = useState(null)
+
 
     const getTaskData = async () => {
         const reqData = await fetch("http://localhost/TaskPilot/api/Tasks.php");
@@ -20,11 +22,17 @@ function TaskBoard() {
         getTaskData();
     }, []);
 
+    const handleEditClick = (task) => {
+        setSelectedTask(task)
+    }
+
+
     return (
         <div className="TaskBoard">
 
             {/* modals */}
             <AddTaskModal />
+
 
             <div className="TaskHeader">
                 <h1>TaskBoard</h1>
@@ -49,6 +57,8 @@ function TaskBoard() {
                         <Task
                             key={index}
                             task={task}
+                            getTaskData={getTaskData}
+                            onEditClick={() => handleEditClick(task)}
                         />
                     ))
                 }
