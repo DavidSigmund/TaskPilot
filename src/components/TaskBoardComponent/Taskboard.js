@@ -1,4 +1,6 @@
-import "./TaskBoard.css"
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import "./TaskBoard.css";
 
 // components
 import AddTaskModal from "../AddTaskModalComponent/AddTaskModal.js";
@@ -8,9 +10,16 @@ function TaskBoard() {
     const [taskData, setTaskData] = useState([]);
 
     const getTaskData = async () => {
-        const reqData = await fetch("http://localhost/TaskPilot/api/Tasks.php");
-        const resData = await reqData.json();
-        setTaskData(resData);
+        try {
+            const reqData = await fetch("http://localhost/TaskPilot/api/Tasks.php");
+            if (!reqData.ok) throw new Error("Network response was not ok");
+
+            const resData = await reqData.json();
+            setTaskData(resData);
+        } catch (error) {
+            console.error("Failed to fetch task data:", error);
+            setTaskData([]); // Set an empty array if fetching fails
+        }
     };
 
 
