@@ -10,16 +10,9 @@ function TaskBoard() {
     const [taskData, setTaskData] = useState([]);
 
     const getTaskData = async () => {
-        try {
-            const reqData = await fetch("http://localhost/TaskPilot/api/Tasks.php");
-            if (!reqData.ok) throw new Error("Network response was not ok");
-
-            const resData = await reqData.json();
-            setTaskData(resData);
-        } catch (error) {
-            console.error("Failed to fetch task data:", error);
-            setTaskData([]); // Set an empty array if fetching fails
-        }
+        const reqData = await fetch("http://localhost/TaskPilot/api/Tasks.php");
+        const resData = await reqData.json();
+        setTaskData(resData);
     };
 
 
